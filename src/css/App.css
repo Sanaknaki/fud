@@ -1,0 +1,79 @@
+.bold {
+    font-weight: 700;
+}
+
+.white {
+    color: white
+}
+
+/* Dropdown + Search Bar styling */
+.drop-down-search {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.drop-down-search::placeholder { color: white; }
+
+/* Randomizer styling */
+.randomizer {
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+
+/* Result Card styling */
+.result-card {
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    display: grid !important;
+}
+.result-card:hover { transform: scale(1.03); }
+
+/* Jumbotron styling */
+.jumbotron {
+    height: 65vh;
+    position: relative;
+    border-radius: 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jumbotron-fud-favourite {
+    position: absolute;
+    width: 100%;
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+    margin-right: 0px;
+    margin-left: 0px;
+
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+/* Review styling */
+.review-user-profile {
+    vertical-align: middle;
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: lightgray;
+}
+
+@media screen and (max-width: 992px) {
+    .blockquote-footer {
+        position: relative !important;
+    }
+    .col-md-6 {
+        text-align: center !important;
+    }
+}
