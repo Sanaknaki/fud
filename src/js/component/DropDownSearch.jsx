@@ -18,7 +18,7 @@ class DropDownSearch extends React.Component {
         let returnList = [];
 
         list.forEach(item => {
-            returnList.push(<Dropdown.Item onClick={() => this.props.selectFilter(item.name)} href="#"><Row><Col md={1} className="text-left">{item.icon}</Col><Col md={8}>{item.name}</Col></Row></Dropdown.Item>);
+            returnList.push(<Dropdown.Item key={item.name} onClick={() => this.props.selectFilter(item.name)} href="#"><Row><Col md={1} className="text-left">{item.icon}</Col><Col md={8}>{item.name}</Col></Row></Dropdown.Item>);
         });
 
         return returnList;

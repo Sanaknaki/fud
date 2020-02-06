@@ -133,7 +133,7 @@ class Home extends React.Component {
 		if(this.state.searchResult.length !== 0) {
 			let list = [];
 
-			list.push(<Col md={12} className="text-left">Results for {this.state.query}</Col>)
+			list.push(<Col key={"results"} md={12} className="text-left">Results for {this.state.query}</Col>)
 
 			this.state.searchResult.forEach(item => {
 				list.push(

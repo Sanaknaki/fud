@@ -22,7 +22,7 @@ class Jumbo extends React.Component {
 
         if(Object.keys(this.props).length === 5) {
             body.push(
-                <React.Fragment>
+                <React.Fragment key={0}>
                     <Container>
                         <Row className="text-center">
                             <Col md={12}>

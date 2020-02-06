@@ -65,7 +65,7 @@ class RandomReviews extends React.Component {
 
         reviews.forEach(review => {
             listOfReviews.push(
-                <Col md={4}>
+                <Col key={review.id} md={4}>
                     <ReviewCard review={review}/>
                 </Col>
             )
