@@ -33,17 +33,17 @@ class DropDownSearch extends React.Component {
     render() {
         return (
             <InputGroup className="mb-3" placeholder="Hi">
-                <DropdownButton style={{outline: "none !important"}} as={InputGroup.Prepend} variant="danger" title={(this.props.chosenFilter === "" ? "Select Filter" : this.props.chosenFilter)} id="input-group-dropdown-1">
+                <DropdownButton as={InputGroup.Prepend} variant="red-button" title={this.props.chosenFilter}>
                     {this.renderListOfFilters(this.props.listOfSearchFilters)}
                 </DropdownButton>
-                <FormControl value={(this.state.searchQuery) === "" ? "" : this.state.searchQuery} onChange={this.updateSearchQuery} className="drop-down-search" placeholder="Search" />
+                <FormControl value={this.state.searchQuery.length === 0 ? "" : this.state.searchQuery} onChange={this.updateSearchQuery} className="drop-down-search" placeholder="Search" />
 
                 <InputGroup.Append>
-                    <Button style={{outline: "none !important", borderRadius: "0px 5px 5px 0px"}} onClick={() => this.props.search(this.state.searchQuery)} variant="danger" disabled={((this.props.chosenFilter === "" || this.state.searchQuery === "" || this.props.searching) ? true : false)}>
+                    <Button style={{outline: "none !important", borderRadius: "0px 5px 5px 0px"}} onClick={() => this.props.search(this.state.searchQuery)} className="red-button" disabled={((this.state.searchQuery.length === 0 || this.props.searching) ? true : false)}>
                         {(this.props.searching) ? <i className="fas fa-spinner fa-spin"></i> : <i className="fas fa-search"></i>}
                     </Button>
                     
-                    <span onClick={() => console.log("boop!")} className="white randomizer"><i className="fas fa-random"></i></span>
+                    {/* <span onClick={() => console.log("boop!")} className="white randomizer"><i className="fas fa-random"></i></span> */}
                 </InputGroup.Append>
             </InputGroup>
         );

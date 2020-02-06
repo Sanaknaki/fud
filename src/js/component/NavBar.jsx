@@ -22,7 +22,7 @@ class NavBar extends React.Component {
                 <Navbar.Brand><font className="white"><Link to ="/"><img src={Icon} height={30} draggable={false} alt="Icon" /></Link></font></Navbar.Brand>
                 <Nav className="mr-auto" />
                 <Nav>
-                    <Nav.Link><i style={{color: "white"}} className="fas fa-question"></i></Nav.Link>
+                    <Nav.Link><Link to="/huh/"><i style={{color: "white"}} className="fas fa-question"></i></Link></Nav.Link>
                 </Nav>
             </Navbar>
         );

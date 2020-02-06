@@ -15,6 +15,18 @@
 
 .drop-down-search::placeholder { color: white; }
 
+.btn-red-button {
+    background-color: #C3423F !important;
+    color: white !important
+}
+.btn-red-button:hover { background-color: #9B3331 !important; }
+
+.red-button {
+    background-color: #C3423F !important;
+    color: white !important
+}
+.red-button { background-color: #9B3331 !important; }
+
 /* Randomizer styling */
 .randomizer {
     margin-left: 10px;
@@ -68,6 +80,12 @@
     margin-right: 10px;
     background-color: lightgray;
 }
+
+/* Link styling */
+.link {
+    color: black;
+}
+.link:hover { color: black; text-decoration: none; }
 
 @media screen and (max-width: 992px) {
     .blockquote-footer {

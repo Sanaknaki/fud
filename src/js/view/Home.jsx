@@ -20,7 +20,7 @@ class Home extends React.Component {
 		this.state = {
 			cuisines: [],
 			searchResult: [],
-			chosenFilter: "",
+			chosenFilter: "Search",
 			query: "",
             searching: false,
 			api_key: { headers: {'user-key': Configuration.API_KEY} },
@@ -44,9 +44,11 @@ class Home extends React.Component {
 
 	componentDidMount() {
 
-        this.renderRandomPopularRestaurant();
+		document.title = "Füd";
 
-		axios.get('https://developers.zomato.com/api/v2.1/cuisines?city_id=89', this.state.api_key).then(cuisineList => {
+        this.renderRandomPopularRestaurant();
+		
+		axios.get('https://developers.zomato.com/api/v2.1/cuisines?city_id=89', this.state.api_key).then(cuisineList => {			
 			this.setState({
 				cuisines: cuisineList.data.cuisines
 			});
@@ -62,8 +64,8 @@ class Home extends React.Component {
 
             for(let i=0; i < res.data.best_rated_restaurant[randomlySelectedIndex].restaurant.price_range; i++) {
                 dollarSign = dollarSign.concat("$");
-            }
-
+			}
+			
             this.setState({
                 restaurantJumbo: {
                     name: res.data.best_rated_restaurant[randomlySelectedIndex].restaurant.name,
@@ -104,7 +106,7 @@ class Home extends React.Component {
 					});
 				}
 			});
-		} else if(this.state.chosenFilter === "Keyword"){
+		} else {
 			axios.get('https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&q='+query+'&start&count='+20, this.state.api_key).then(res => {
 				this.setState({
 					searchResult: res.data.restaurants,
@@ -117,38 +119,36 @@ class Home extends React.Component {
 	};
 	
 	renderRestaurantCard() {
-		if(this.state.searchResult.length === 0) {
-			return <p>Uhm. search?</p>
-		} else {
+		if(this.state.searchResult.length !== 0) {
 			let list = [];
 
 			list.push(<Col md={12} className="text-left">Results for {this.state.query} :</Col>)
 
 			this.state.searchResult.forEach(item => {
 				list.push(
-                    <Col key={this.props.id} md={4}>
-                        <Link to={{pathname: `/restaurant/${item.restaurant.id}`}}>
-                            <RestaurantCard 
-                                viewDetails={this.viewDetails}
-                                item={item}
-                                name={item.restaurant.name}
-                                address={item.restaurant.location.address}
-                                rating={item.restaurant.user_rating.aggregate_rating} 
-                                numberOfRatings={item.restaurant.all_reviews_count}
-                                price={item.restaurant.price} 
-                                image={item.restaurant.featured_image}
-                                />
-                        </Link>
-                    </Col>
+					<Col key={this.props.id} md={4}>
+						<Link to={{pathname: `/restaurant/${item.restaurant.id}`}}>
+							<RestaurantCard 
+								viewDetails={this.viewDetails}
+								item={item}
+								name={item.restaurant.name}
+								address={item.restaurant.location.address}
+								rating={item.restaurant.user_rating.aggregate_rating} 
+								numberOfRatings={item.restaurant.all_reviews_count}
+								price={item.restaurant.price} 
+								image={item.restaurant.featured_image}
+								/>
+						</Link>
+					</Col>
 				);
 			});
 
 			list.push(
 				<Col key={this.props.id} md={4}>
-                    <Jumbotron onClick={() => this.search(this.state.query, 2)} className="text-center result-card" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))`}}>
-                        <h3 className="white">Load More Results</h3>
-                    </Jumbotron>
-                </Col>
+					<Jumbotron onClick={() => this.search(this.state.query, 2)} className="text-center result-card" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))`}}>
+						<h3 className="white">Load More Results</h3>
+					</Jumbotron>
+				</Col>
 			);
 
 			return list;
@@ -156,6 +156,9 @@ class Home extends React.Component {
 	};
 
   	render() {
+
+		let underJumbo = (this.state.resultsFound || this.state.cuisines.length === 0) ? <Container><Row>{this.renderRestaurantCard()}</Row></Container> : <div style={{marginLeft: "15px", marginRight: "15px"}}><h5>Reviews</h5><RandomReviews api_key={this.state.api_key} cuisines={this.state.cuisines}/></div>;
+
 		return (
 			<React.Fragment>
                 <Jumbo 
@@ -165,8 +168,7 @@ class Home extends React.Component {
 					searching={this.state.searching} 
                     search={this.search}
 				/>
-				
-				{this.state.resultsFound ? <Container><Row>{this.renderRestaurantCard()}</Row></Container> : <div style={{marginLeft: "15px", marginRight: "15px"}}><RandomReviews api_key={this.state.api_key} cuisines={this.state.cuisines}/></div> }
+				{underJumbo}
 			</React.Fragment>
 		);
   	}

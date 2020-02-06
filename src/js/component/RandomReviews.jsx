@@ -20,14 +20,18 @@ class RandomReviews extends React.Component {
 
     componentDidMount() {
 
-        const randomCuisine = Math.floor(Math.random() * this.props.cuisines.length).cuisine_id;
+        const randomCuisineNumber = Math.floor(Math.random() * this.props.cuisines.length);
+        const randomCuisine = this.props.cuisines[randomCuisineNumber].cuisine_id;
 
         axios.get('https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&cuisines='+ randomCuisine + '&sort=rating', this.props.api_key).then(res => {
             let list=[];
+            
             for(let i=0; i<3; i++) {
                 let obj = {};
-                obj.id = res.data.restaurants[Math.floor(Math.random() * res.data.restaurants.length)].restaurant.id;
-                obj.name = res.data.restaurants[Math.floor(Math.random() * res.data.restaurants.length)].restaurant.name
+                let randomRestaurantNumber = Math.floor(Math.random() * res.data.restaurants.length);
+
+                obj.id = res.data.restaurants[randomRestaurantNumber].restaurant.id;
+                obj.name = res.data.restaurants[randomRestaurantNumber].restaurant.name
                 list.push(obj);
             }
 
@@ -39,6 +43,7 @@ class RandomReviews extends React.Component {
                     let listOfReviews = this.state.reviews;
 
                     let reviewObject = {};
+                    reviewObject.id = obj.id
                     reviewObject.name = obj.name;
                     reviewObject.review = res.data.user_reviews[Math.floor(Math.random() * res.data.user_reviews.length)].review
 
@@ -52,11 +57,13 @@ class RandomReviews extends React.Component {
         }));
     };
 
-    renderReviews() {
+   renderReviews() {
         let { reviews } = this.state;
         let listOfReviews = [];
         
         reviews.sort((a, b) => b.review.rating - a.review.rating);
+
+        console.log(reviews);
 
         reviews.forEach(review => {
             listOfReviews.push(
@@ -71,7 +78,7 @@ class RandomReviews extends React.Component {
                 {listOfReviews}
             </Row>
         );
-    }
+    } 
 
     render() {
         return (

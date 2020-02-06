@@ -1,7 +1,9 @@
 import React from 'react';
-import '../../css/App.css';
+
+import '../../css/Restaurant.css';
 
 import DropDownSearch from '../component/DropDownSearch.jsx';
+
 import { Jumbotron, Col, Row, Container, Badge } from 'react-bootstrap';
 
 class Jumbo extends React.Component {
@@ -9,7 +11,7 @@ class Jumbo extends React.Component {
         super(props);
 
         this.state = {            
-            listOfSearchFilters: [{icon: <i className="fas fa-comment"></i>, name:"Keyword"}, {icon: <i className="fas fa-utensils"></i>, name:"Cuisines"}],
+            listOfSearchFilters: [{icon: <i className="fas fa-comment"></i>, name:"Search"}, {icon: <i className="fas fa-utensils"></i>, name:"Cuisines"}],
         }
 
         this.renderJumboBody = this.renderJumboBody.bind(this);
@@ -18,13 +20,13 @@ class Jumbo extends React.Component {
     renderJumboBody() {
         let body = [];
 
-        if(Object.keys(this.props.restaurantJumbo).length === 6) {
+        if(Object.keys(this.props).length === 5) {
             body.push(
                 <React.Fragment>
                     <Container>
                         <Row className="text-center">
                             <Col md={12}>
-                                <h1 className="white bold">FÜD<span className="bold" style={{fontSize: "15px"}}><Badge style={{backgroundColor: "red"}}>TORONTO</Badge></span></h1>
+                                <h1 className="white bold">FÜD<span className="bold" style={{fontSize: "15px"}}><Badge style={{backgroundColor: "#C3423F"}}>TORONTO</Badge></span></h1>
                                 <DropDownSearch 
                                     searching={this.props.searching} 
                                     search={this.props.search} 
@@ -52,18 +54,19 @@ class Jumbo extends React.Component {
                     <Container>
                         <Row className="white text-center">
                             <Col md={12}>
-                                <h1 className="bold">{this.props.restaurantJumbo.name}</h1>
-                            </Col>
-
-                            <Col md={12}>
-                                <h5>{this.props.restaurantJumbo.rating}  {"(" + this.props.restaurantJumbo.numberOfRatings + ")"}</h5>
-                            </Col>
-
-                            <Col md={12}>
-                                <h5>{this.props.restaurantJumbo.price}</h5>
+                                <h1 className="jumbo-restaurant-text bold">{this.props.restaurantJumbo.name}</h1>
                             </Col>
                         </Row>
                     </Container>
+
+                    <Row className="jumbotron-fud-favourite">
+                        <Col md={6} className="text-left" style={{paddingLeft: "0px"}}>
+                            <span className="white">{this.props.restaurantJumbo.location.address}</span>
+                        </Col>
+                        <Col md={6} className="text-right" style={{paddingRight: "0px"}}>
+                            <span className="white text-right">{this.props.restaurantJumbo.timings} • {this.props.restaurantJumbo.cuisines} • {this.props.restaurantJumbo.price}</span>
+                        </Col>
+                    </Row>
                 </React.Fragment>
             );
         }

@@ -1,0 +1,31 @@
+.jumbo-restaurant-text {
+    font-size: 3.5vw;
+}
+
+/* Badge styling */
+.badge-row {
+    margin-bottom: 32px;
+}
+
+.badge-active {
+
+}
+
+.badge-disabled {
+    border-color: red;
+}
+
+@media screen and (max-width: 767px) {
+    .badge-text {
+        display: none;
+    }
+    
+    .badge-placement {
+        text-align: center !important;
+        margin-bottom: 5px;
+    }
+
+    .jumbo-restaurant-text {
+        font-size: 10vw;
+    }
+}
