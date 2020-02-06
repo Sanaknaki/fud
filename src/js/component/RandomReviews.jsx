@@ -63,8 +63,6 @@ class RandomReviews extends React.Component {
         
         reviews.sort((a, b) => b.review.rating - a.review.rating);
 
-        console.log(reviews);
-
         reviews.forEach(review => {
             listOfReviews.push(
                 <Col md={4}>

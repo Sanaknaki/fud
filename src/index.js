@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './js/view/Home.jsx';
 import Restaurant from './js/view/Restaurant.jsx';
-import Huh from './js/view/Huh.jsx';
+
 import Navbar from './js/component/NavBar.jsx';
 
 import * as serviceWorker from './serviceWorker';
@@ -22,7 +22,6 @@ const Root = () => {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/restaurant/:id" component={Restaurant} />
-                    <Route path="/huh/" component={Huh} />
                     <Redirect from="/restaurant/" to="/" />
                 </Switch>
             </Router>

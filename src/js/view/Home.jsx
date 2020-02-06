@@ -11,7 +11,7 @@ import { Configuration } from '../configuration.js';
 
 import { Link } from "react-router-dom";
 
-import { Container, Row, Col, Jumbotron } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -93,9 +93,11 @@ class Home extends React.Component {
 		}
 
 		if(this.state.chosenFilter === "Cuisines") {
+            let temp = true;
 
 			this.state.cuisines.forEach(cuisine => {
 				if(query.toLowerCase() === cuisine.cuisine.cuisine_name.toLowerCase()) {
+                    temp = false;
 					axios.get('https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&count='+20+'&cuisines='+cuisine.cuisine.cuisine_id, this.state.api_key).then(res => {
 						this.setState({
 							searchResult: res.data.restaurants,
@@ -105,7 +107,16 @@ class Home extends React.Component {
 						});
 					});
 				}
-			});
+            });
+
+            if(temp) {
+                this.setState({
+                    searchResult: [],
+                    searching: false,
+                    resultsFound: true,
+                    query: query
+                });
+            }
 		} else {
 			axios.get('https://developers.zomato.com/api/v2.1/search?entity_id=89&entity_type=city&q='+query+'&start&count='+20, this.state.api_key).then(res => {
 				this.setState({
@@ -122,7 +133,7 @@ class Home extends React.Component {
 		if(this.state.searchResult.length !== 0) {
 			let list = [];
 
-			list.push(<Col md={12} className="text-left">Results for {this.state.query} :</Col>)
+			list.push(<Col md={12} className="text-left">Results for {this.state.query}</Col>)
 
 			this.state.searchResult.forEach(item => {
 				list.push(
@@ -143,16 +154,22 @@ class Home extends React.Component {
 				);
 			});
 
-			list.push(
-				<Col key={this.props.id} md={4}>
-					<Jumbotron onClick={() => this.search(this.state.query, 2)} className="text-center result-card" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))`}}>
-						<h3 className="white">Load More Results</h3>
-					</Jumbotron>
-				</Col>
-			);
+			// list.push(
+			// 	<Col key={this.props.id} md={4}>
+			// 		<Jumbotron onClick={() => this.search(this.state.query, 2)} className="text-center result-card" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))`}}>
+			// 			<h3 className="white">Load More Results</h3>
+			// 		</Jumbotron>
+			// 	</Col>
+			// );
 
 			return list;
-		}
+		} else {
+            return (
+                <Col md={12}>
+                    <p>No results found for {this.state.query}</p>
+                </Col>
+            );
+        }
 	};
 
   	render() {
