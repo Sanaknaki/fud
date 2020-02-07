@@ -1,6 +1,6 @@
-# Project Title
+# FÜD
 
-FÜD, just your everyday "What do you want to eat? I don't really care." restaurant searcher. Built over the course of 7 days, just wanted to work on some ReactJS work.
+Just your everyday "What do you want to eat? I don't really care, it's Toronto there's so many options." restaurant searcher. Built over the course of 7 days, just wanted to work on some ReactJS work.
 
 ## Important Information
 
