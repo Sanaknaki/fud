@@ -123,7 +123,7 @@ class Restaurant extends React.Component {
                     </Row>
 
                     <Row>
-                        <Col md={6}>
+                        <Col md={{ span: 6, offset: 3 }}>
                             {this.renderReviews()}
                         </Col>
                     </Row>
