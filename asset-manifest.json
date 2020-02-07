@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/fud/static/css/main.85817571.chunk.css",
+    "main.js": "/fud/static/js/main.e8505868.chunk.js",
+    "main.js.map": "/fud/static/js/main.e8505868.chunk.js.map",
+    "runtime-main.js": "/fud/static/js/runtime-main.15a43915.js",
+    "runtime-main.js.map": "/fud/static/js/runtime-main.15a43915.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/fud/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.82540106.chunk.js": "/fud/static/js/2.82540106.chunk.js",
+    "static/js/2.82540106.chunk.js.map": "/fud/static/js/2.82540106.chunk.js.map",
+    "index.html": "/fud/index.html",
+    "precache-manifest.07bac52c6f1ed42c135676f06b3cf372.js": "/fud/precache-manifest.07bac52c6f1ed42c135676f06b3cf372.js",
+    "service-worker.js": "/fud/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/fud/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.85817571.chunk.css.map": "/fud/static/css/main.85817571.chunk.css.map",
+    "static/js/2.82540106.chunk.js.LICENSE": "/fud/static/js/2.82540106.chunk.js.LICENSE",
+    "static/media/icon-white.png": "/fud/static/media/icon-white.7e410ef3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.15a43915.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.82540106.chunk.js",
+    "static/css/main.85817571.chunk.css",
+    "static/js/main.e8505868.chunk.js"
+  ]
+}
