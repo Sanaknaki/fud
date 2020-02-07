@@ -22,7 +22,7 @@ class NavBar extends React.Component {
 
         return (
             <Navbar fixed="top" style={{backgroundColor: "transparent"}}>
-                <Navbar.Brand><font className="white"><Link to ="/"><img src={IconWhite} height={30} draggable={false} alt="Icon" /></Link></font></Navbar.Brand>
+                <Navbar.Brand><font className="white"><Link to ="/fud"><img src={IconWhite} height={30} draggable={false} alt="Icon" /></Link></font></Navbar.Brand>
             </Navbar>
         );
     }

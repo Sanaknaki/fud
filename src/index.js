@@ -20,9 +20,9 @@ const Root = () => {
             <Router>
                 <Navbar />
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/fud" component={Home} />
                     <Route path="/restaurant/:id" component={Restaurant} />
-                    <Redirect from="/restaurant/" to="/" />
+                    <Redirect from="/restaurant/" to="/fud" />
                 </Switch>
             </Router>
         </React.Fragment>
