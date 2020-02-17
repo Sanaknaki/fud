@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Füd",
+  "name": "Find food places around Toronto",
   "icons": [
     {
       "src": "http://localhost:3000/static/media/icon-white.7e410ef3.png",
