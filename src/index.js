@@ -20,9 +20,9 @@ const Root = () => {
             <Router>
                 <Navbar />
                 <Switch>
-                    <Route exact path={process.env.PUBLIC_URL + "/"} component={Home} />
-                    <Route path={process.env.PUBLIC_URL + "/fud/restaurant/:id"} component={Restaurant} />
-                    <Redirect from={ process.env.PUBLIC_URL + "/fud/restaurant/"} to="/fud" />
+                    <Route exact path={"/fud"} component={Home} />
+                    <Route path="/fud/restaurant/:id" component={Restaurant} />
+                    <Redirect from="/fud/restaurant/" to="/fud" />
                 </Switch>
             </Router>
         </React.Fragment>
