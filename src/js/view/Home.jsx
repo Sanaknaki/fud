@@ -138,7 +138,7 @@ class Home extends React.Component {
 			this.state.searchResult.forEach(item => {
 				list.push(
 					<Col key={this.props.id} md={4}>
-						<Link to={{pathname: `/fud/restaurant/${item.restaurant.id}`}}>
+						<Link to={{pathname: `/fud?res=${item.restaurant.id}`}}>
 							<RestaurantCard 
 								viewDetails={this.viewDetails}
 								item={item}

@@ -52,7 +52,7 @@ class ReviewCard extends React.Component {
 
         if(this.props.review.id) {
             return (
-                <Link className="link" to={{pathname: `/fud/restaurant/${this.props.review.id}`}}>
+                <Link className="link" to={{pathname: `/fud?res=${this.props.review.id}`}}>
                     {card}
                 </Link>
             );
